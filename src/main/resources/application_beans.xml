@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+ 
+ <bean id="student1" class="com.spring.core.demos.basics.Student" init-method="myInit" destroy-method="myDestroy" lazy-init="default" >
+  <property name="name" value="iiht"></property>
+   <property name="roll" value="123"></property>
+  
+ </bean>
+ 
+  <bean id="student2" class="com.spring.core.demos.basics.Student">
+  <property name="name" value="xyz"></property>
+   <property name="roll" value="124"></property>
+  
+ </bean>
+ 
+ 
+ <bean id="student3" class="com.spring.core.demos.basics.Student">
+   <constructor-arg>
+   <value>IIHT</value>
+   </constructor-arg>
+   
+  <constructor-arg>
+   <value>543</value>
+   </constructor-arg>
+  
+ </bean>
+ 
+ 
+ <bean id="scopebean" class="com.spring.core.demos.basics.bean.scope.ScopeBean" scope="singleton" >
+  <property name="scopeName" value="current bean scope is singleton"></property>
+   
+  
+ </bean>
+ 
+  <bean id="prototypebean" class="com.spring.core.demos.basics.bean.scope.PrototypeSpringBean" scope="prototype">  
+ </bean>
+ 
+ </beans>
