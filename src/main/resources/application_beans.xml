@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+		
+		  >
+		
+<!-- 		<context:annotation-config /> -->
  
  
  <bean id="student1" class="com.spring.core.demos.basics.Student" init-method="myInit" destroy-method="myDestroy" lazy-init="default" >
@@ -40,4 +44,65 @@
   <bean id="prototypebean" class="com.spring.core.demos.basics.bean.scope.PrototypeSpringBean" scope="prototype">  
  </bean>
  
+ 
+<!--  DI Test -->
+
+<bean id="student" class="com.spring.core.demos.basics.di.Student">
+<!-- <property name="departmentObj" ref="department"></property> -->
+<constructor-arg ref="department"></constructor-arg>
+</bean>
+
+<bean id="department" class="com.spring.core.demos.basics.di.Department"></bean>
+
+
+<bean id="collectionBean" class="com.spring.core.demos.basics.di.CollectionBean">
+<property name="collectionBeanName" value="Collection Bean Test"></property>
+
+<property name="collectionBeanList">
+<list>
+<value>Hello</value>
+<value>how</value>
+<value>are</value>
+<value>you</value>
+<value>?</value>
+</list>
+</property>
+
+<property name="collectionBeanSet">
+<set>
+<value>hey</value>
+<value>I</value>
+<value>am</value>
+<value>good</value>
+<value>good</value>
+<value>good</value>
+<value>good</value>
+<value>I</value>
+<value>I</value>
+<value>I</value>
+</set>
+</property>
+
+<property name="collectionBeanMap">
+<map>
+<entry key="name" value="john"></entry>
+<entry key="age" value="25"></entry>
+<entry key="address" value="test street"></entry>
+<entry key="name" value="john new name"></entry>
+ </map>
+</property>
+
+</bean>
+ 
+<bean id="grass" class="com.spring.core.demos.basics.di.autowiring.Grass">
+<property name="grassName" value="green grass"></property>
+</bean>
+
+
+<bean id ="animalObj" class="com.spring.core.demos.basics.di.autowiring.Animal" autowire="byName"></bean>
+
+<bean id ="animalObj2" class="com.spring.core.demos.basics.di.autowiring.Animal" autowire="byType"></bean>
+
+<bean id ="animalWithConst" class="com.spring.core.demos.basics.di.autowiring.AnimalWithConsructor" autowire="constructor"></bean>
+
  </beans>
