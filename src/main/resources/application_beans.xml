@@ -7,7 +7,8 @@
 		
 		  >
 		
-<!-- 		<context:annotation-config /> -->
+<context:annotation-config />
+<context:component-scan base-package="com.spring.core.demos.basics.componentscan"></context:component-scan>
  
  
  <bean id="student1" class="com.spring.core.demos.basics.Student" init-method="myInit" destroy-method="myDestroy" lazy-init="default" >
@@ -104,5 +105,19 @@
 <bean id ="animalObj2" class="com.spring.core.demos.basics.di.autowiring.Animal" autowire="byType"></bean>
 
 <bean id ="animalWithConst" class="com.spring.core.demos.basics.di.autowiring.AnimalWithConsructor" autowire="constructor"></bean>
+
+<!-- <bean id="studentrequirebean" class="com.spring.core.demos.basics.di.autowiring.require.StudentBean"  ></bean> -->
+<!-- <bean id="deptrequirebean" class="com.spring.core.demos.basics.di.autowiring.require.DepartBean"> -->
+<!-- <property name="deptname" value="Computer Science Dept."></property> -->
+<!-- </bean> -->
+
+<bean id="studentbeanautowiredobj" class="com.spring.core.demos.basics.di.autowiring.annotationbased.StudentBean"  ></bean>
+<bean id="departmentbeanautowiredobj" class="com.spring.core.demos.basics.di.autowiring.annotationbased.DepartBeanTest">
+<property name="deptname" value="Computer Science Dept."></property>
+</bean>
+
+<bean id="animalcat" class="com.spring.core.demos.basics.di.autowiring.qualifier.Cat" primary="true"></bean>
+<bean id="animaldog" class="com.spring.core.demos.basics.di.autowiring.qualifier.Dog"></bean>
+<bean id="animalDepnedentobj" class="com.spring.core.demos.basics.di.autowiring.qualifier.AnimalDepnedent"></bean>
 
  </beans>
