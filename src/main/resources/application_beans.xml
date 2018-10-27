@@ -2,14 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop = "http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
-		
-		  >
-		
+	http://www.springframework.org/schema/aop 
+   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd" >
+
+
+<context:property-placeholder location="dbconfig.properties"/>
 <context:annotation-config />
-<context:component-scan base-package="com.spring.core.demos.basics.componentscan"></context:component-scan>
+<context:component-scan base-package="com.spring.core.demos.basics"></context:component-scan>
  
+  <aop:aspectj-autoproxy/>
  
  <bean id="student1" class="com.spring.core.demos.basics.Student" init-method="myInit" destroy-method="myDestroy" lazy-init="default" >
   <property name="name" value="iiht"></property>
@@ -106,10 +110,9 @@
 
 <bean id ="animalWithConst" class="com.spring.core.demos.basics.di.autowiring.AnimalWithConsructor" autowire="constructor"></bean>
 
-<!-- <bean id="studentrequirebean" class="com.spring.core.demos.basics.di.autowiring.require.StudentBean"  ></bean> -->
-<!-- <bean id="deptrequirebean" class="com.spring.core.demos.basics.di.autowiring.require.DepartBean"> -->
-<!-- <property name="deptname" value="Computer Science Dept."></property> -->
-<!-- </bean> -->
+<bean id="studentrequirebean" class="com.spring.core.demos.basics.di.autowiring.require.StudentBean"  autowire="no">
+</bean>
+
 
 <bean id="studentbeanautowiredobj" class="com.spring.core.demos.basics.di.autowiring.annotationbased.StudentBean"  ></bean>
 <bean id="departmentbeanautowiredobj" class="com.spring.core.demos.basics.di.autowiring.annotationbased.DepartBeanTest">
@@ -120,4 +123,9 @@
 <bean id="animaldog" class="com.spring.core.demos.basics.di.autowiring.qualifier.Dog"></bean>
 <bean id="animalDepnedentobj" class="com.spring.core.demos.basics.di.autowiring.qualifier.AnimalDepnedent"></bean>
 
+<bean id="mydbconfig" class="com.spring.core.demos.basics.propertyfiles.DBConfig">
+<property name="host" value="${db.host}"></property>
+<property name="port" value="${db.port}"></property>
+<property name="dbuser" value="${db.user}"></property>
+</bean>
  </beans>

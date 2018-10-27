@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Required;
 
 public class StudentBean {
 	
-	private DepartBeanTest departBean;
+	private DepartmentBean departBean;
 
-	public DepartBeanTest getDepartBean() {
+	public DepartmentBean getDepartBean() {
 		return departBean;
 	}
 
 	@Required
-	public void setDepartBean(DepartBeanTest departBean) {
+	public void setDepartBean(DepartmentBean departBean) {
 		this.departBean = departBean;
 	}
 
